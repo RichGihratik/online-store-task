@@ -11,8 +11,7 @@ const props = defineProps<{
 const { inCart, toggleProduct } = useProductInfo(props.product);
 
 const cartBtnClass = computed(() => {
-  if (inCart.value) return 'cart-btn_in-cart';
-  else return '';
+  return inCart.value ? 'cart-btn_in-cart' : '';
 });
 
 function cartBtnClick(e: Event) {
@@ -27,7 +26,10 @@ function cartBtnClick(e: Event) {
       <img class="product__image" :src="product.thumbnail" loading="lazy" />
     </div>
     <div class="product-list-item__info">
-      <RouterLink :to="{ name: RouteNames.product, params: { id: `${product.id}` } }" class="a product__heading product-list-item__heading">
+      <RouterLink
+        :to="{ name: RouteNames.product, params: { id: `${product.id}` } }"
+        class="a product__heading product-list-item__heading"
+      >
         {{ product.title }}
       </RouterLink>
 

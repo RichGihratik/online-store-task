@@ -12,18 +12,19 @@ export function useQueryParam(key: string, disableNumber = false) {
   const param = computed({
     get() {
       const queryParam = router.currentRoute.value.query[key];
-      if (isString(queryParam)) { 
+      if (isString(queryParam)) {
         const array = queryParam.split(urlSeparator);
-        if (isNumberArray(array) && !disableNumber) return array.map((value) => Number(value));
-        else return array;
+        return isNumberArray(array) && !disableNumber ? array.map((value) => Number(value)) : array;
+      } else {
+        return null;
       }
-      else return null;
     },
     async set(value) {
       let setValue: number | string | undefined = undefined;
 
-      if (isNumberArray(value)) setValue = value.join(urlSeparator);
-      else if (isStringArray(value)) setValue = value.join(urlSeparator);
+      if (isNumberArray(value) || isStringArray(value)) {
+        setValue = value.join(urlSeparator);
+      }
 
       await router.push({
         query: {
@@ -36,4 +37,3 @@ export function useQueryParam(key: string, disableNumber = false) {
 
   return { param };
 }
-

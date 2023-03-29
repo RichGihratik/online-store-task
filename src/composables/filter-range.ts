@@ -29,17 +29,17 @@ export function useFilterByRange<Key extends keyof TNumberFields>(key: Key) {
   const bounds: Ref<TRangeBounds> = ref({});
 
   watch(productsFiltered, () => {
-    const max = findMax(productsFiltered.value);
-    const min = findMin(productsFiltered.value);
+      const max = findMax(productsFiltered.value);
+      const min = findMin(productsFiltered.value);
 
-    if (products.value.length !== 0)
-      bounds.value = {
-        upper: max,
-        lower: min,
+      if (products.value.length !== 0) {
+        bounds.value = {
+          upper: max,
+          lower: min,
+        };
       }
-  }, {
-    deep: true
-  });
+    }, { deep: true },
+  );
 
   function setBounds(bounds: TRangeBounds) {
     if (!bounds.upper && !bounds.lower) {
@@ -73,10 +73,10 @@ export function useFilterByRange<Key extends keyof TNumberFields>(key: Key) {
   }
 
   watch(param, () => {
-    syncWithQuery();
-  }, {
-    immediate: true
-  });
+      syncWithQuery();
+    },
+    { immediate: true },
+  );
 
   return { maxTotal, minTotal, bounds, applyBounds };
 }

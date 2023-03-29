@@ -1,4 +1,4 @@
-import { type IProduct } from '@/services'
+import { type IProduct } from '@/services';
 import { computed } from 'vue';
 import { useCart } from '@/store';
 
@@ -10,9 +10,8 @@ export function useProductInfo(product: IProduct) {
   });
 
   function toggleProduct() {
-    if (!inCart.value) cartStore.addProduct(product);
-    else cartStore.dropProduct(product.id);
-  };
+    !inCart.value ? cartStore.addProduct(product) : cartStore.dropProduct(product.id);
+  }
 
   return {
     toggleProduct,
