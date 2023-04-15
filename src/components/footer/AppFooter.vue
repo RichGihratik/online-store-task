@@ -10,9 +10,6 @@ const year = ref((new Date()).getFullYear());
 
 <template>
   <footer v-once class="page-footer">
-    <a class="a course-link" href="https://rs.school/js">
-      <img class="course-link__logo" src="https://rs.school/images/rs_school_js.svg"/>
-    </a>
     <span class="year">
       @{{year}}.
       All rights reserved
@@ -36,14 +33,6 @@ const year = ref((new Date()).getFullYear());
   align-items: center;
   padding: 10px 30px;
   box-shadow: 0px -3px 4px rgba(0, 0, 0, 0.25);
-}
-
-.course-link {
-  display: block;
-  &__logo {
-    display: block;
-    width: 90px;
-  }
 }
 
 .year {
