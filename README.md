@@ -1,2 +1,2 @@
 # online-store-task
-Online store task from RS School
+Simple online store task 

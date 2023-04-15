@@ -1,7 +1,7 @@
 {
     "name": "online-store-task",
     "version": "1.0.0",
-    "description": "Online store project for RS School",
+    "description": "Simple online store project",
     "scripts": {
         "deploy": "gh-pages -d dist -m 'Deploying to gh-pages'",
         "serve": "webpack serve --open --config ./webpack.config.js --env mode=dev",
@@ -10,12 +10,6 @@
         "clean": "rm -rf dist cache",
         "test": "vitest"
     },
-    "keywords": [
-        "RS",
-        "School",
-        "Store",
-        "Vue"
-    ],
     "author": "RichGihratik, pa4ka1992",
     "license": "MIT",
     "devDependencies": {
