@@ -25,6 +25,7 @@
         "@vue/test-utils": "^2.0.0-rc.18",
         "autoprefixer": "^10.4.13",
         "clean-webpack-plugin": "^4.0.0",
+        "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.7.2",
         "css-minimizer-webpack-plugin": "^4.2.2",
         "eslint": "^8.29.0",

@@ -3,6 +3,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { merge } = require('webpack-merge');
 
@@ -69,6 +70,18 @@ const baseConfig = {
     ],
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        { 
+          context: './public',
+          from: '**/*' ,
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
+          to: '.'
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
       filename: 'index.html',
