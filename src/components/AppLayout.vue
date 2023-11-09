@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, type Ref, computed, watchPostEffect, onUpdated } from 'vue';
+import { ref, type Ref, computed, onMounted, onUnmounted, onUpdated } from 'vue';
 
 const mainPadding = 30;
 
@@ -11,17 +11,22 @@ const top = ref(0);
 
 const bottom = ref(0);
 
-const updateOffests = (): void => {
+const updateOffsets = (): void => {
   top.value = header.value?.offsetHeight ?? 0;
   bottom.value = footer.value?.offsetHeight ?? 0;
 };
 
-watchPostEffect(() => {
-  updateOffests();
+onMounted(() => {
+  updateOffsets();
+  window.addEventListener('resize', updateOffsets);
 });
 
 onUpdated(() => {
-  updateOffests();
+  updateOffsets();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateOffsets);
 });
 
 const mainStyles = computed(() => {
